@@ -3,4 +3,3 @@ Nowadays, parallel robots are used popularly in industry because of its flexibil
 
 MATLAB's visualization capabilities allow you to create 2D or 3D animations of the five-bar parallel robot's motion. You can plot the trajectories, visualize joint angles, velocities, and forces, and observe the robot's behavior in real-time. This visual feedback aids in understanding the robot's kinematics and dynamics and supports debugging, analysis, and presentation of results.
 In the Matlab-Simulink/SimulationParallel folder you will find all files related and used for Matlab/Simulink model of the robot. The original approach was to train optimize the controller gains through simulation with this model but be advised that it took one hour of computing to simulate 1 second of robot movement. https://youtu.be/-mN-EzNc1tQ?si=2JMFAL4tGZeSrtJu
-![Uploading legged-scara.jpg…]()
