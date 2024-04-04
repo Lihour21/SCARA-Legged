@@ -1,0 +1,410 @@
+////////////////////////////////////////////// MOTOR 1 (axis0) //////////////////////////////////////////////
+
+///////////////////////////////////// (Step 1)
+
+dev0.axis0.motor.config.current_lim_margin = 8
+dev0.axis0.motor.config.current_lim = 10
+
+dev0.config.dc_max_positive_current = 22 ## 5A
+dev0.config.dc_max_negative_current = -1
+
+dev0.config.enable_brake_resistor = True
+dev0.config.brake_resistance = 2
+
+dev0.axis0.motor.config.current_lim_margin = 12
+dev0.axis0.motor.config.current_lim = 5
+dev0.axis0.motor.config.pole_pairs = 20
+dev0.axis0.motor.config.torque_constant = 8.27 / 90
+dev0.axis0.motor.config.resistance_calib_max_voltage = 4
+dev0.axis0.motor.config.requested_current_range = 40
+dev0.axis0.motor.config.current_control_bandwidth = 500
+dev0.axis0.motor.config.motor_type = MOTOR_TYPE_HIGH_CURRENT
+
+dev0.axis0.encoder.config.mode = ENCODER_MODE_INCREMENTAL
+dev0.axis0.encoder.config.cpr = 4096*4
+dev0.axis0.encoder.config.bandwidth = 100
+
+dev0.axis0.controller.config.pos_gain = 4
+dev0.axis0.controller.config.vel_gain = 0.137
+dev0.axis0.controller.config.vel_integrator_gain = 1.37
+dev0.axis0.controller.config.vel_limit = 31
+
+///////////////////////////////////// (Step 2)
+
+dev0.save_configuration()
+
+///////////////////////////////////// (Step 3)
+
+dev0.axis0.requested_state = AXIS_STATE_FULL_CALIBRATION_SEQUENCE
+
+///////////////////////////////////// (Step 4)
+
+dev0.axis0.encoder.config.pre_calibrated = True
+
+///////////////////////////////////// (Step 5)
+
+dev0.axis0.requested_state = AXIS_STATE_ENCODER_INDEX_SEARCH
+
+///////////////////////////////////// (Step 6)
+
+dev0.axis0.motor.config.pre_calibrated = True
+
+///////////////////////////////////// (Step 7)
+
+dev0.save_configuration()
+
+///////////////////////////////////// (Step 8)
+
+dev0.axis0.requested_state = AXIS_STATE_CLOSED_LOOP_CONTROL
+
+///////////////////////////////////// (Step 9)
+
+dev0.axis0.config.startup_closed_loop_control = True
+
+///////////////////////////////////// (Step 10)(If the motor not hold as closed loop you need to solve by order method below)
+
+dev0.axis0.requested_state = AXIS_STATE_FULL_CALIBRATION_SEQUENCE
+
+///////////////////////////////////// (Step 11)
+
+dev0.axis0.motor.config.pre_calibrated = False
+
+///////////////////////////////////// (Step 12)
+
+dev0.axis0.requested_state = AXIS_STATE_ENCODER_INDEX_SEARCH
+
+///////////////////////////////////// (Step 13)
+
+dev0.axis0.config.startup_encoder_offset_calibration = True
+
+dev0.axis0.motor.config.pre_calibrated = True
+
+///////////////////////////////////// (Step 14)
+
+dev0.axis0.requested_state = AXIS_STATE_ENCODER_INDEX_SEARCH
+
+///////////////////////////////////// (Step 15)
+
+dev0.axis0.config.startup_encoder_offset_calibration = True
+dev0.axis0.motor.config.pre_calibrated = True
+dev0.axis0.encoder.config.pre_calibrated = True
+
+///////////////////////////////////// (Step 16)
+
+dev0.save_configuration()
+
+///////////////////////////////////// (Step 17)
+
+dev0.axis0.requested_state = AXIS_STATE_CLOSED_LOOP_CONTROL
+
+///////////////////////////////////// (Step 18)
+
+dev0.axis0.config.startup_closed_loop_control = True
+
+///////////////////////////////////// (Step 19)
+
+dev0.axis0.requested_state = AXIS_STATE_FULL_CALIBRATION_SEQUENCE
+
+///////////////////////////////////// (Step 20)
+
+dev0.axis0.motor.config.pre_calibrated
+dev0.axis0.encoder.config.pre_calibrated = False
+
+///////////////////////////////////// (Step 21)
+
+dev0.axis0.motor.config.pre_calibrated
+dev0.axis0.encoder.config.pre_calibrated= True
+
+///////////////////////////////////// (Step 22)
+
+dev0.axis0.encoder.config.use_index = True
+dev0.axis0.encoder.config.pre_calibrated = False
+
+///////////////////////////////////// (Step 23)
+
+dev0.axis0.requested_state = AXIS_STATE_ENCODER_INDEX_SEARCH
+
+///////////////////////////////////// (Step 24)
+
+dev0.axis0.requested_state = AXIS_STATE_ENCODER_OFFSET_CALIBRATION
+
+///////////////////////////////////// (Step 25)
+
+dev0.axis0.motor.config.pre_calibrated = True
+dev0.axis0.encoder.config.pre_calibrated = True
+
+///////////////////////////////////// (Step 26)
+
+dev0.save_configuration()
+
+///////////////////////////////////// (Step 27)
+
+dev0.axis0.config.startup_encoder_index_search = True
+
+///////////////////////////////////// (Step 28)
+
+dev0.axis0.requested_state = AXIS_STATE_CLOSED_LOOP_CONTROL
+
+///////////////////////////////////// (Step 29)
+
+dev0.axis0.controller.config.control_mode = CONTROL_MODE_VELOCITY_CONTROL
+
+///////////////////////////////////// (Step 30)
+
+dev0.save_configuration()
+
+///////////////////////////////////// (Step 31)
+
+dev0.axis0.config.startup_encoder_offset_calibration = False
+
+///////////////////////////////////// (Step 32)
+
+dev0.save_configuration()
+
+///////////////////////////////////// (if False come up on SAVE)
+
+#(Aditional for different Computer)
+
+dev0.axis0.requested_state = AXIS_STATE_IDLE
+dev0.axis1.requested_state = AXIS_STATE_IDLE
+
+dev0.save_configuration()
+
+///////////////////////////////////// (Only Testing)
+
+dev0.axis0.controller.input_vel = 1
+
+dev0.axis0.controller.input_vel = 3
+
+dev0.axis0.controller.input_vel = 5
+
+dev0.axis0.controller.input_vel = 0
+
+dev0.reboot()
+
+////////////////////////////////////////////// MOTOR 2 (axis1) //////////////////////////////////////////////
+
+
+///////////////////////////////////// (Step 1)
+
+dev0.axis1.motor.config.current_lim_margin = 8
+dev0.axis1.motor.config.current_lim = 10
+
+dev0.config.dc_max_positive_current = 22 ## 5A
+dev0.config.dc_max_negative_current = -1
+
+dev0.config.enable_brake_resistor = True
+dev0.config.brake_resistance = 2
+
+dev0.axis1.motor.config.current_lim_margin = 12
+dev0.axis1.motor.config.current_lim = 5
+dev0.axis1.motor.config.pole_pairs = 20
+dev0.axis1.motor.config.torque_constant = 8.27 / 90
+dev0.axis1.motor.config.resistance_calib_max_voltage = 4
+dev0.axis1.motor.config.requested_current_range = 40
+dev0.axis1.motor.config.current_control_bandwidth = 500
+dev0.axis1.motor.config.motor_type = MOTOR_TYPE_HIGH_CURRENT
+
+dev0.axis1.encoder.config.mode = ENCODER_MODE_INCREMENTAL
+dev0.axis1.encoder.config.cpr = 4096*4
+dev0.axis1.encoder.config.bandwidth = 100
+
+dev0.axis1.controller.config.pos_gain = 4
+dev0.axis1.controller.config.vel_gain = 0.137
+dev0.axis1.controller.config.vel_integrator_gain = 1.37
+dev0.axis1.controller.config.vel_limit = 31
+
+///////////////////////////////////// (Step 2)
+
+dev0.save_configuration()
+
+///////////////////////////////////// (if False come up on SAVE)
+
+#(Aditional for different Computer)
+
+dev0.axis0.requested_state = AXIS_STATE_IDLE
+dev0.axis1.requested_state = AXIS_STATE_IDLE
+
+dev0.save_configuration()
+
+///////////////////////////////////// (Step 3)
+
+dev0.axis1.requested_state = AXIS_STATE_FULL_CALIBRATION_SEQUENCE
+
+///////////////////////////////////// (Step 4)
+
+dev0.axis1.encoder.config.pre_calibrated = True
+
+///////////////////////////////////// (Step 5)
+
+dev0.axis1.requested_state = AXIS_STATE_ENCODER_INDEX_SEARCH
+
+///////////////////////////////////// (Step 6)
+
+dev0.axis1.motor.config.pre_calibrated = True
+
+///////////////////////////////////// (Step 7)
+
+dev0.save_configuration()
+
+///////////////////////////////////// (if False come up on SAVE)
+
+#(Aditional for different Computer)
+
+dev0.axis0.requested_state = AXIS_STATE_IDLE
+dev0.axis1.requested_state = AXIS_STATE_IDLE
+
+dev0.save_configuration()
+
+///////////////////////////////////// (Step 8)
+
+dev0.axis1.requested_state = AXIS_STATE_CLOSED_LOOP_CONTROL
+
+///////////////////////////////////// (Step 9)
+
+dev0.axis1.config.startup_closed_loop_control = True
+
+///////////////////////////////////// (Step 10)(If the motor not hold as closed loop you need to solve by order method below)
+
+dev0.axis1.requested_state = AXIS_STATE_FULL_CALIBRATION_SEQUENCE
+
+///////////////////////////////////// (Step 11)
+
+dev0.axis1.motor.config.pre_calibrated = False
+
+///////////////////////////////////// (Step 12)
+
+dev0.axis1.requested_state = AXIS_STATE_ENCODER_INDEX_SEARCH
+
+///////////////////////////////////// (Step 13)
+
+dev0.axis1.config.startup_encoder_offset_calibration = True
+
+dev0.axis1.motor.config.pre_calibrated = True
+
+///////////////////////////////////// (Step 14)
+
+dev0.axis1.requested_state = AXIS_STATE_ENCODER_INDEX_SEARCH
+
+///////////////////////////////////// (Step 15)
+
+dev0.axis1.config.startup_encoder_offset_calibration = True
+dev0.axis1.motor.config.pre_calibrated = True
+dev0.axis1.encoder.config.pre_calibrated = True
+
+///////////////////////////////////// (Step 16)
+
+dev0.save_configuration()
+
+///////////////////////////////////// (if False come up on SAVE)
+
+#(Aditional for different Computer)
+
+dev0.axis0.requested_state = AXIS_STATE_IDLE
+dev0.axis1.requested_state = AXIS_STATE_IDLE
+
+dev0.save_configuration()
+
+///////////////////////////////////// (Step 17)
+
+
+dev0.axis1.requested_state = AXIS_STATE_CLOSED_LOOP_CONTROL
+
+///////////////////////////////////// (Step 18)
+
+dev0.axis1.config.startup_closed_loop_control = True
+
+///////////////////////////////////// (Step 19)
+
+dev0.axis1.requested_state = AXIS_STATE_FULL_CALIBRATION_SEQUENCE
+
+///////////////////////////////////// (Step 20)
+
+dev0.axis1.motor.config.pre_calibrated
+dev0.axis1.encoder.config.pre_calibrated = False
+
+///////////////////////////////////// (Step 21)
+
+dev0.axis1.motor.config.pre_calibrated
+dev0.axis1.encoder.config.pre_calibrated= True
+
+///////////////////////////////////// (Step 22)
+
+dev0.axis1.encoder.config.use_index = True
+dev0.axis1.encoder.config.pre_calibrated = False
+
+///////////////////////////////////// (Step 23)
+
+dev0.axis1.requested_state = AXIS_STATE_ENCODER_INDEX_SEARCH
+
+///////////////////////////////////// (Step 24)
+
+dev0.axis1.requested_state = AXIS_STATE_ENCODER_OFFSET_CALIBRATION
+
+///////////////////////////////////// (Step 25)
+
+dev0.axis1.motor.config.pre_calibrated = True
+dev0.axis1.encoder.config.pre_calibrated = True
+
+///////////////////////////////////// (Step 26)
+
+dev0.save_configuration()
+
+///////////////////////////////////// (if False come up on SAVE)
+
+#(Aditional for different Computer)
+
+dev0.axis0.requested_state = AXIS_STATE_IDLE
+dev0.axis1.requested_state = AXIS_STATE_IDLE
+
+dev0.save_configuration()
+
+///////////////////////////////////// (Step 27)
+
+dev0.axis1.config.startup_encoder_index_search = True
+
+///////////////////////////////////// (Step 28)
+
+dev0.axis1.requested_state = AXIS_STATE_CLOSED_LOOP_CONTROL
+
+///////////////////////////////////// (Step 29)
+
+dev0.axis1.controller.config.control_mode = CONTROL_MODE_VELOCITY_CONTROL
+
+///////////////////////////////////// (Step 30)
+
+dev0.save_configuration()
+
+///////////////////////////////////// (if False come up on SAVE)
+
+#(Aditional for different Computer)
+
+dev0.axis0.requested_state = AXIS_STATE_IDLE
+dev0.axis1.requested_state = AXIS_STATE_IDLE
+
+dev0.save_configuration()
+
+///////////////////////////////////// (Step 31)
+
+dev0.axis1.config.startup_encoder_offset_calibration = False
+
+///////////////////////////////////// (if False come up on SAVE)
+
+#(Aditional for different Computer)
+
+dev0.axis0.requested_state = AXIS_STATE_IDLE
+dev0.axis1.requested_state = AXIS_STATE_IDLE
+
+dev0.save_configuration()
+
+///////////////////////////////////// (Only Testing)
+
+dev0.axis1.controller.input_vel = 1
+
+dev0.axis1.controller.input_vel = 3
+
+dev0.axis1.controller.input_vel = 5
+
+dev0.axis1.controller.input_vel = 0
+
+dev0.reboot()
